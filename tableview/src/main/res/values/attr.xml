@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TableView">
+        <attr name="ButtonBackground" format="reference" />
+        <attr name="ButtonTextSize" format="dimension" />
+        <attr name="ButtonPadding" format="dimension" />
+        <attr name="ButtonLeftPadding" format="dimension" />
+        <attr name="ButtonRightPadding" format="dimension" />
+        <attr name="ButtonTopPadding" format="dimension" />
+        <attr name="ButtonBottomPadding" format="dimension" />
+        <attr name="ButtonMaxWidth" format="dimension" />
+        <attr name="ButtonMinWidth" format="dimension" />
+        <attr name="ButtonMinHeight" format="dimension" />
+        <attr name="ButtonMaxHeight" format="dimension" />
+    </declare-styleable>
+</resources>

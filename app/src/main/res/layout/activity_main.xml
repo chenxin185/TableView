@@ -7,35 +7,36 @@
     android:orientation="vertical"
     tools:context="com.chenxin.tableviewdemo.MainActivity">
 
-<!--    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
 
-        <com.chenxin.tableviewdemo.MyTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="哈哈哈" />
+    <!--    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
 
-        <com.chenxin.tableviewdemo.MyTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="哈哈哈" />
+            <com.chenxin.tableviewdemo.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="哈哈哈" />
 
-        <com.chenxin.tableviewdemo.MyTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="哈哈哈" />
-    </LinearLayout>-->
+            <com.chenxin.tableviewdemo.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="哈哈哈" />
+
+            <com.chenxin.tableviewdemo.MyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="哈哈哈" />
+        </LinearLayout>-->
 
     <com.chenxin.tableview.TableView
         android:id="@+id/tableView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </com.chenxin.tableview.TableView>
+        android:layout_height="match_parent"
+        app:ButtonBackground="@drawable/button_style"
+        app:ButtonTextSize="10sp" />
 
 </LinearLayout>

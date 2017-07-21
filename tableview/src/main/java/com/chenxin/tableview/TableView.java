@@ -1,6 +1,8 @@
 package com.chenxin.tableview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -54,7 +56,7 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         }
 
         if (listener == null) {
-            Log.e(TAG, "listener == null");
+            Log.e(TAG, "onItemClickListener == null");
             return;
         }
         listener.onClick(view);
@@ -127,7 +129,76 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             }
         });
         addView(mRecyclerView);
+
+        initStyle(context, attrs, defStyleAttr);
     }
+
+    /**
+     * 设置自定义属性
+     *
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     */
+    private void initStyle(Context context, AttributeSet attrs, int defStyleAttr) {
+        if (attrs == null) {
+            return;
+        }
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TableView, defStyleAttr, 0);
+
+        for (Button b : mButtons) {
+            Drawable d = a.getDrawable(R.styleable.TableView_ButtonBackground);
+            if (d != null) {
+                b.setBackground(d);
+            }
+        }
+
+        float textSize = a.getDimensionPixelSize(R.styleable.TableView_ButtonTextSize, -1);
+        int padding = a.getDimensionPixelSize(R.styleable.TableView_ButtonPadding, -1);
+        int minWidth = a.getDimensionPixelSize(R.styleable.TableView_ButtonMinWidth, -1);
+        int minHeight = a.getDimensionPixelSize(R.styleable.TableView_ButtonMinHeight, -1);
+        int maxHeight = a.getDimensionPixelSize(R.styleable.TableView_ButtonMaxHeight, -1);
+        int maxWidth = a.getDimensionPixelSize(R.styleable.TableView_ButtonMaxWidth, -1);
+        int paddingLeft = a.getDimensionPixelSize(R.styleable.TableView_ButtonLeftPadding, -1);
+        int paddingRight = a.getDimensionPixelSize(R.styleable.TableView_ButtonRightPadding, -1);
+        int paddingTop = a.getDimensionPixelSize(R.styleable.TableView_ButtonTopPadding, -1);
+        int paddingBottom = a.getDimensionPixelSize(R.styleable.TableView_ButtonBottomPadding, -1);
+
+        for (Button b : mButtons) {
+            if (textSize != -1) {
+                b.setTextSize(textSize);
+            }
+
+            if (padding != -1) {
+                b.setPadding(padding, padding, padding, padding);
+            }
+
+            if (minWidth != -1) {
+                b.setMinWidth(minWidth);
+                b.setMinimumWidth(minWidth);
+            }
+
+            if (minHeight != -1) {
+                b.setMinHeight(minHeight);
+                b.setMinimumHeight(minHeight);
+            }
+
+            if (maxHeight != -1) {
+                b.setMaxHeight(maxHeight);
+            }
+
+            if (maxWidth != -1) {
+                b.setMaxWidth(maxWidth);
+            }
+
+            if (paddingLeft != -1 || paddingRight != -1 || paddingTop != -1 || paddingBottom != -1) {
+                b.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+            }
+        }
+
+        a.recycle();
+    }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -193,9 +264,14 @@ public class TableView extends ViewGroup implements View.OnClickListener {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        layoutRecyclerView(changed, r, b);
+/*        layoutRecyclerView(changed, r, height);
         layoutHeadView(changed, r);
-        layoutButtons(changed, l, r);
+        layoutButtons(changed, l, r);*/
+        int height = getHeight();
+        int width = getWidth();
+        layoutRecyclerView(changed, width, height);
+        layoutHeadView(changed, width);
+        layoutButtons(changed, 0, width);
     }
 
 
@@ -231,7 +307,6 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             recyclerViewItemCount = mRecyclerView.getChildCount();
             recyclerViewHeight = recyclerViewItemCount * itemHeight;
         }
-        Log.e(TAG, "recyHeight = " + recyclerViewHeight + " headHeight = " + headViewHeight);
         mRecyclerView.layout(0, headViewHeight, r, recyclerViewHeight + headViewHeight);
     }
 

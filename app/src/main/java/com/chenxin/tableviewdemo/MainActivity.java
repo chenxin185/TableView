@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout linearLayout = new LinearLayout(this);
         ViewGroup.LayoutParams p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         linearLayout.setLayoutParams(p);
-        tableView.addHeadView(LayoutInflater.from(this).inflate(R.layout.head, linearLayout));
+        tableView.addHeadView(LayoutInflater.from(this).inflate(R.layout.head, linearLayout));//添加头部
         tableView.setAdapter(new MyAdapter());
     }
 
