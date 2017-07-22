@@ -56,7 +56,7 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         }
 
         if (listener == null) {
-            Log.e(TAG, "onItemClickListener == null");
+            //Log.e(TAG, "onItemClickListener == null");
             return;
         }
         listener.onClick(view);
@@ -112,14 +112,19 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                Log.e("infoo", "onScrolled");
                 if (move) {
                     move = false;
                     //获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置
                     LinearLayoutManager manager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+                    Log.e(TAG, "能看见的第一个item为 -->> " + manager.findFirstVisibleItemPosition());
                     int n = position - manager.findFirstVisibleItemPosition();
+                    Log.e("infoo", "n = " + n);
                     if (0 <= n && n < mRecyclerView.getChildCount()) {
                         //获取要置顶的项顶部离RecyclerView顶部的距离
                         int top = mRecyclerView.getChildAt(n).getTop();
+                        //int top = n * recyclerView.getChildAt(0).getHeight();
+                        Log.e("infoo", "top = " + top);
                         //最后的移动
                         mRecyclerView.scrollBy(0, top);
                         noScrollLayoutManager.setScroll(false);
@@ -129,7 +134,6 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             }
         });
         addView(mRecyclerView);
-
         initStyle(context, attrs, defStyleAttr);
     }
 
@@ -410,10 +414,11 @@ public class TableView extends ViewGroup implements View.OnClickListener {
 
         private void freshRecyclerView() {
             position = (currentPage - 1) * recyclerViewItemCount;
-            if (position + recyclerViewItemCount >= adapter.getItemCount() - 1) {
+            if ((position + recyclerViewItemCount) >= (adapter.getItemCount())) {
+                Log.e("infoo", "大于 -->>");
                 position = adapter.getItemCount() - recyclerViewItemCount;
             }
-            Log.e("infoo", "移动到  posiont -> " + position+"     itemCount = "+recyclerViewItemCount);
+            Log.e("infoo", "移动到  posiont -> " + position + "     itemCount = " + recyclerViewItemCount);
             moveToPosition(position);
         }
 
@@ -425,20 +430,27 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             int lastItem = manager.findLastVisibleItemPosition();
             //然后区分情况
             if (n <= firstItem) {
+                Log.e("infoo", "--- 1");
                 //当要置顶的项在当前显示的第一个项的前面时
-                // mRecyclerView.scrollToPosition(n);
-                manager.scrollToPositionWithOffset(n, 0);
+                mRecyclerView.scrollToPosition(n);
+                // manager.scrollToPositionWithOffset(n, 0);
             } else if (n <= lastItem) {
+                Log.e("infoo", "--- 2");
                 //当要置顶的项已经在屏幕上显示时
                 int top = mRecyclerView.getChildAt(n - firstItem).getTop();
                 noScrollLayoutManager.setScroll(true);
                 mRecyclerView.scrollBy(0, top);
+                noScrollLayoutManager.setScroll(false);
             } else {
+                Log.e("infoo", "--- 3");
                 //当要置顶的项在当前显示的最后一项的后面时
-                mRecyclerView.scrollToPosition(n);
-                noScrollLayoutManager.setScroll(true);
-                //这里这个变量是用在RecyclerView滚动监听里面的
+                // manager.scrollToPositionWithOffset(n, 0);
                 move = true;
+                noScrollLayoutManager.setScroll(true);
+                mRecyclerView.scrollToPosition(n);
+
+                //这里这个变量是用在RecyclerView滚动监听里面的
+
             }
 
         }
@@ -464,7 +476,8 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         @Override
         public boolean canScrollVertically() {
             //让RecyclerView不能滑动
-            return canScroll && super.canScrollVertically();
+            // return true && super.canScrollVertically();
+            return canScroll;
         }
 
     }
