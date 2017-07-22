@@ -432,6 +432,8 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             if (n <= firstItem) {
                 Log.e("infoo", "--- 1");
                 //当要置顶的项在当前显示的第一个项的前面时
+                move = true;
+                noScrollLayoutManager.setScroll(true);
                 mRecyclerView.scrollToPosition(n);
                 // manager.scrollToPositionWithOffset(n, 0);
             } else if (n <= lastItem) {
@@ -448,9 +450,7 @@ public class TableView extends ViewGroup implements View.OnClickListener {
                 move = true;
                 noScrollLayoutManager.setScroll(true);
                 mRecyclerView.scrollToPosition(n);
-
                 //这里这个变量是用在RecyclerView滚动监听里面的
-
             }
 
         }
