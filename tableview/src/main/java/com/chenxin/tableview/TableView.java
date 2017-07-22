@@ -62,7 +62,7 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         listener.onClick(view);
     }
 
-    interface onItemClickListener {
+    public interface onItemClickListener {
         void onClick(View v);
     }
 
