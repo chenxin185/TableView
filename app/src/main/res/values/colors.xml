@@ -3,4 +3,31 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="Khaki">#F0E68C</color>
+    <color name="LightBLue">#ADD8E6</color>
+    <color name="DarkKhaki">#BDB76B</color>
+    <color name="LightSteelBlue">#B0C4DE</color>
+    <color name="DarkCyan">#008B8B</color>
+    <color name="white">#ffffff</color>
+    <color name="LightCyan">#E1FFFF</color>
+    <color name="PaleTurquoise">#AFEEEE</color>
+    <color name="LightGrey">#D3D3D3</color>
+    <color name="LightSkyBlue">#87CEFA</color>
+    <color name="DeepSkyBlue">#00BFFF</color>
+    <color name="DimGray">#404050</color>
+    <color name="DarkGray">#A9A9A9</color>
+
+
+
+    <color name="aa">#979797</color>
+    <color name="bb">#bcbcbc</color>
+
+    <color name="layout_exercise_bg">#F4F5F8</color>
+    <color name="btn_exercise_save">#54C805</color>
+    <color name="btn_exercise_test">#2380FF</color>
+    <color name="btn_exercise_back">#C1FFFE</color>
+    <color name="btn_func_choose_solid">#F4F6FF</color>
+    <color name="btn_func_choose_stroke">#B5B5B6</color>
+
 </resources>

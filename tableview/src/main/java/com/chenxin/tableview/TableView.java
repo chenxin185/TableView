@@ -411,8 +411,9 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         private void freshRecyclerView() {
             position = (currentPage - 1) * recyclerViewItemCount;
             if (position + recyclerViewItemCount >= adapter.getItemCount() - 1) {
-                position = adapter.getItemCount() - 1;
+                position = adapter.getItemCount() - recyclerViewItemCount;
             }
+            Log.e("infoo", "移动到  posiont -> " + position+"     itemCount = "+recyclerViewItemCount);
             moveToPosition(position);
         }
 

@@ -30,6 +30,38 @@ public class MainActivity extends AppCompatActivity {
             "魔蛇之拥9 ", "卡西奥佩娅9 ", "死亡颂唱者9 ", "卡尔萨斯9 ", "黑暗之女 安妮9 ", "（Annie）皮城女警9 ", "凯特琳9 ", "（女警）寡妇制造者9 ", "伊芙琳9 ", "（EVE）瘟疫之源9 "
     };
 
+/*
+    private void initData() {
+        list = new ArrayList<>();
+        list.add(new HistoryData("17-02-01", "1232435BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-03-02", "1233234BD", "123456", "正常", "270分钟"));
+        list.add(new HistoryData("17-04-03", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-04", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-05", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-06", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-07", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-08", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-09", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-10", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-11", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-12", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-13", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-14", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-15", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-16", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-17", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-18", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-19", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-20", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-21", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-22", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-23", "1286431BD", "123456", "正常", "360分钟"));
+        list.add(new HistoryData("17-04-24", "1433243BD", "123456", "正常", "180分钟"));
+        list.add(new HistoryData("17-02-25", "1252435BD", "123456", "正常", "420分钟"));
+        list.add(new HistoryData("17-03-26", "1286431BD", "123456", "正常", "360分钟"));
+    }
+*/
+
     TableView tableView;
 
     @Override
@@ -37,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tableView = (TableView) findViewById(R.id.tableView);
+        //  initData();
         list = new ArrayList<>();
         for (int i = 0; i < heroNameList.length; i++) {
             list.add(new Hero(heroNameList[i], (int) (Math.random() * 10), (int) (Math.random() * 10)));
