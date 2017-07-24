@@ -35,6 +35,7 @@ public class HistoryAdapter extends TableAdapter<HistoryAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.outerLayer.setClickable(true);
         holder.date.setText(list.get(position).getData());
         holder.id.setText(list.get(position).getId());
         holder.recordId.setText(list.get(position).getRecordId());
@@ -48,6 +49,7 @@ public class HistoryAdapter extends TableAdapter<HistoryAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        View outerLayer;
         TextView date;
         TextView id;
         TextView recordId;
@@ -56,6 +58,7 @@ public class HistoryAdapter extends TableAdapter<HistoryAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
+            outerLayer = itemView.findViewById(R.id.outerLayer);
             date = (TextView) itemView.findViewById(R.id.date);
             id = (TextView) itemView.findViewById(R.id.id);
             recordId = (TextView) itemView.findViewById(R.id.recordId);

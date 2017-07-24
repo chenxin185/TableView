@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -83,7 +82,7 @@ public class TableView extends ViewGroup implements View.OnClickListener {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         setWillNotDraw(false);
-        setClickable(true);
+        //setClickable(true);
         LayoutParams l;
         //设置Button样式
         for (int i = 0; i < mButtons.length; i++) {
