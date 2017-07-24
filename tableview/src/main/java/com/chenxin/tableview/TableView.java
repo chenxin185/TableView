@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -111,9 +112,8 @@ public class TableView extends ViewGroup implements View.OnClickListener {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                //Log.e("infoo", "onScrolled");
                 if (move) {
-                    move = false;
+                    //move = false;
                     //获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置
                     LinearLayoutManager manager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
                     int n = position - manager.findFirstVisibleItemPosition();
@@ -122,13 +122,15 @@ public class TableView extends ViewGroup implements View.OnClickListener {
                         int top = mRecyclerView.getChildAt(n).getTop();
                         //最后的移动
                         mRecyclerView.scrollBy(0, top);
-                        top = mRecyclerView.getChildAt(0).getTop();
-                        if (top != 0) {
-                            //经过测试发现有得时候Scroll可能会产生偏差，所以再次判断是否滑动到指定的位置
-                            mRecyclerView.scrollBy(0, top);
+
+                        //滚动完成之后进行判断，是否滚动到了指定的位置
+                        n = position - manager.findFirstVisibleItemPosition();
+                        top = mRecyclerView.getChildAt(n).getTop();
+                        if (top == 0) {
+                            //如果滚动到了指定的位置，就没必要继续滚动了，否则继续滚动。
+                            move = false;
+                            noScrollLayoutManager.setScroll(false);
                         }
-                        noScrollLayoutManager.setScroll(false);
-                        // Log.e(TAG, "能看见的第一个item为 -->> " + manager.findFirstVisibleItemPosition() + " top = " + mRecyclerView.getChildAt(0).getTop());
                     }
                 }
             }
@@ -210,7 +212,6 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         measureHeadView(widthMeasureSpec, heightMeasureSpec);
         measureButton(widthMeasureSpec, heightMeasureSpec);
         measureRecyclerView(widthMeasureSpec, heightMeasureSpec);
-        //setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
     }
 
     /**
@@ -268,9 +269,6 @@ public class TableView extends ViewGroup implements View.OnClickListener {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-/*        layoutRecyclerView(changed, r, height);
-        layoutHeadView(changed, r);
-        layoutButtons(changed, l, r);*/
         int height = getHeight();
         int width = getWidth();
         layoutRecyclerView(changed, width, height);
