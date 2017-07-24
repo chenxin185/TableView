@@ -127,6 +127,10 @@ public class TableView extends ViewGroup implements View.OnClickListener {
                         Log.e("infoo", "top = " + top);
                         //最后的移动
                         mRecyclerView.scrollBy(0, top);
+                        top = mRecyclerView.getChildAt(0).getTop();
+                        if (top != 0) {
+                            mRecyclerView.scrollBy(0, top);
+                        }
                         noScrollLayoutManager.setScroll(false);
                         Log.e(TAG, "能看见的第一个item为 -->> " + manager.findFirstVisibleItemPosition() + " top = " + mRecyclerView.getChildAt(0).getTop());
                     }
