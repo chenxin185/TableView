@@ -18,5 +18,5 @@
  
  ### 在app的gradle中：
  	dependencies {
-	        compile 'com.github.chenxin185:TableView:1.4.8'
+	        compile 'com.github.chenxin185:TableView:1.4.9'
 	}
