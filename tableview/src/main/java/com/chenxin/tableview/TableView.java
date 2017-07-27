@@ -23,7 +23,7 @@ import android.widget.Button;
  */
 public class TableView extends ViewGroup implements View.OnClickListener {
 
-    public static final String TAG = "TableView";
+    private static final String TAG = "TableView";
     Button[] mButtons = new Button[4];//四个Button(首页，上一页，下一页，尾页)
     RecyclerView mRecyclerView;
     View headView;
@@ -264,6 +264,15 @@ public class TableView extends ViewGroup implements View.OnClickListener {
         final int rcWSpec = getChildMeasureSpec(widthMeasureSpec, 0, rclp.width);
         mRecyclerView.measure(rcWSpec, rcHSpec);
         recyclerViewHeight = mRecyclerView.getMeasuredHeight();
+/*        if (mAdapter != null) {
+            View v = mRecyclerView.getChildAt(0);
+            if (v != null) {
+                LayoutParams itemL = v.getLayoutParams();
+                int childHSpec = getChildMeasureSpec(heightMeasureSpec, 0, itemL.height);
+                int childWSpec = getChildMeasureSpec(widthMeasureSpec, 0, itemL.width);
+                v.measure(childWSpec, childHSpec);
+            }
+        }*/
     }
 
 

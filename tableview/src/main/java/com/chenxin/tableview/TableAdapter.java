@@ -9,4 +9,5 @@ import android.view.ViewGroup;
  */
 
 public abstract class TableAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+
 }
